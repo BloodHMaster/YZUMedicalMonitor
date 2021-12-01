@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yangzhou.intelligent.mapper.PatientMapper" >
+  <resultMap id="BaseResultMap" type="com.yangzhou.intelligent.model.Patient" >
+    <id column="Pid" property="pid" jdbcType="INTEGER" />
+    <result column="PName" property="pname" jdbcType="VARCHAR" />
+    <result column="PGender" property="pgender" jdbcType="VARCHAR" />
+    <result column="PAge" property="page" jdbcType="INTEGER" />
+    <result column="PHeight" property="pheight" jdbcType="DOUBLE" />
+    <result column="PWeight" property="pweight" jdbcType="DOUBLE" />
+    <result column="DName" property="dname" jdbcType="VARCHAR" />
+    <result column="if_del" property="ifDel" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Pid, PName, PGender, PAge, PHeight, PWeight, DName, if_del
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from patient
+    where Pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from patient
+    where Pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yangzhou.intelligent.model.Patient" >
+    insert into patient (Pid, PName, PGender, 
+      PAge, PHeight, PWeight, 
+      DName, if_del)
+    values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{pgender,jdbcType=VARCHAR}, 
+      #{page,jdbcType=INTEGER}, #{pheight,jdbcType=DOUBLE}, #{pweight,jdbcType=DOUBLE}, 
+      #{dname,jdbcType=VARCHAR}, #{ifDel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yangzhou.intelligent.model.Patient" >
+    insert into patient
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        Pid,
+      </if>
+      <if test="pname != null" >
+        PName,
+      </if>
+      <if test="pgender != null" >
+        PGender,
+      </if>
+      <if test="page != null" >
+        PAge,
+      </if>
+      <if test="pheight != null" >
+        PHeight,
+      </if>
+      <if test="pweight != null" >
+        PWeight,
+      </if>
+      <if test="dname != null" >
+        DName,
+      </if>
+      <if test="ifDel != null" >
+        if_del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pgender != null" >
+        #{pgender,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=INTEGER},
+      </if>
+      <if test="pheight != null" >
+        #{pheight,jdbcType=DOUBLE},
+      </if>
+      <if test="pweight != null" >
+        #{pweight,jdbcType=DOUBLE},
+      </if>
+      <if test="dname != null" >
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="ifDel != null" >
+        #{ifDel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yangzhou.intelligent.model.Patient" >
+    update patient
+    <set >
+      <if test="pname != null" >
+        PName = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pgender != null" >
+        PGender = #{pgender,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        PAge = #{page,jdbcType=INTEGER},
+      </if>
+      <if test="pheight != null" >
+        PHeight = #{pheight,jdbcType=DOUBLE},
+      </if>
+      <if test="pweight != null" >
+        PWeight = #{pweight,jdbcType=DOUBLE},
+      </if>
+      <if test="dname != null" >
+        DName = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="ifDel != null" >
+        if_del = #{ifDel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yangzhou.intelligent.model.Patient" >
+    update patient
+    set PName = #{pname,jdbcType=VARCHAR},
+      PGender = #{pgender,jdbcType=VARCHAR},
+      PAge = #{page,jdbcType=INTEGER},
+      PHeight = #{pheight,jdbcType=DOUBLE},
+      PWeight = #{pweight,jdbcType=DOUBLE},
+      DName = #{dname,jdbcType=VARCHAR},
+      if_del = #{ifDel,jdbcType=INTEGER}
+    where Pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

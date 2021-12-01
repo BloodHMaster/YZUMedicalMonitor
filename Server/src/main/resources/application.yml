@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/medical_monitor?serverTimezone=Asia/Shanghai
+#    username: intelligent
+#    password: haz2001322
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mail:
+    username: 18752523836@163.com
+    password: VCZEVTRYWXPZLFAS
+    host: smtp.163.com
+    nickname: YD 编程
+    from: 18752523836@163.com  #发送邮件的地址，和上面username一致
+
+
+mybatis:
+  type-aliases-package: com.sun.student.model
+  mapper-locations: classpath:mapping/*.xml
+logging:
+  config: classpath:logback-spring.xml
