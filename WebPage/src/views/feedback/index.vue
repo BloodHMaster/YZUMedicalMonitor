@@ -119,7 +119,7 @@
              {pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号', trigger: 'blur'}
           ],
           email:[
-            {required: true, message: '请输入手机号', trigger: 'blur'},
+            {required: true, message: '请输入邮箱', trigger: 'blur'},
             {pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/, message: '请输入正确的邮箱', trigger: 'blur'}
           ],
           star: [
@@ -189,5 +189,10 @@
 
   .container{
     padding:0 20% 0 20%
+  }
+
+  .el-form
+  {
+    border: 1px #333;
   }
 </style>

@@ -88,10 +88,10 @@ export const constantRoutes = [
     meta: { title: '个人中心', icon: 'el-icon-user' },
     children: [
       {
-        path: '/password',
-        name: '修改密码',
-        component: () => import('@/views/user/password'),
-        meta: { title: '修改密码', icon: 'tree' }
+        path: '/info',
+        name: '个人信息',
+        component: () => import('@/views/user/index'),
+        meta: { title: '个人信息', icon: 'tree' }
       },
 
       {
